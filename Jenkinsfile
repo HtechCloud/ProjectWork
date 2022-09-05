@@ -2,7 +2,7 @@ node(){
     
     stage("checkout from SCM"){
         
-      git 'https://github.com/KCTechnologiesDevOps/KCMavenWebProject.git'  
+      git 'https://github.com/HtechCloud/ProjectWork.git'  
     }
     stage("Maven build"){
         def mvnHome = tool name: 'M2_HOME', type: 'maven'
@@ -11,7 +11,7 @@ node(){
     }
     stage("Build docker image"){
         
-        sh "docker build -t kctechnologiesdevops/batch17:${currentBuild.number} ."
+        sh "docker build -t htechcloud/batch10:${currentBuild.number} ."
     }
     stage("Push image"){
         withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
